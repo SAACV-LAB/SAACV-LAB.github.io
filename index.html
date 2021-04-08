@@ -113,6 +113,60 @@
   
     
       <article
+id="post-如何解决条件对齐问题"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/04/08/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%9D%A1%E4%BB%B6%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/">如何解决条件对齐问题？——帅欣成</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="1-负迁移"><a href="#1-负迁移" class="headerlink" title="1.负迁移"></a>1.负迁移</h1><h2 id="1-1负迁移定义"><a href="#1-1负迁移定义" class="headerlink" title="1.1负迁移定义"></a>1.1负迁移定义</h2><p>原始定义：</p>
+<p><strong>源域</strong>上的知识在目标域上产生了<strong>副作用</strong>。</p>
+<p>这个定义隐藏了许多关键要素，比如负迁移与什么因素有关，负转移应该被定义为某种公式。</p>
+<p>具体地说，上面的非正式定义没有说明负迁移的影响是与什么比较来看的。例如，与仅使用目标数据的最好的算法进行比较将导致错误，即将负迁移定义为：
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-04-08T09:54:36.420Z" itemprop="datePublished">2021-04-08</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/Transfer-Learning/">Transfer Learning</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/report/" rel="tag">report</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transfer-learning/" rel="tag">transfer learning</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
 id="post-hello-world"
 class="article article-type-post"
 >
@@ -148,170 +202,6 @@ class="article article-type-post"
   <time datetime="2021-04-08T09:52:00.037Z" itemprop="datePublished">2021-04-08</time>
 </div>
     
-    
-    </div>
-</footer>
-
-</article>
-
-    
-  
-    
-      <article
-id="post-如何解决条件对齐问题"
-class="article article-type-post"
->
-
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2021/04/08/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%9D%A1%E4%BB%B6%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/">如何解决条件对齐问题？——帅欣成</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <h1 id="1-负迁移"><a href="#1-负迁移" class="headerlink" title="1.负迁移"></a>1.负迁移</h1><h2 id="1-1负迁移定义"><a href="#1-1负迁移定义" class="headerlink" title="1.1负迁移定义"></a>1.1负迁移定义</h2><p>原始定义：</p>
-<p><strong>源域</strong>上的知识在目标域上产生了<strong>副作用</strong>。</p>
-<p>这个定义隐藏了许多关键要素，比如负迁移与什么因素有关，负转移应该被定义为某种公式。</p>
-<p>具体地说，上面的非正式定义没有说明负迁移的影响是与什么比较来看的。例如，与仅使用目标数据的最好的算法进行比较将导致错误，即将负迁移定义为：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1449541187.png" alt="img"></p>
-<p>因为风险的增加可能不是来自使用源域数据，而是来自算法的差异。因此，为了研究负迁移，<strong>我们应该一次关注一个特定的算法</strong>，并比较其在<strong>有源域数据</strong>和<strong>没有源域数据</strong>的性能。因此，我们定义<strong>负迁移条件（NTC）</strong>为：</p>
-<center></center>
-
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1449709171.png" alt="img"></p>
-<p>同样定义**负迁移间隙(NTG)**作为负迁移的可量化指标：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1449753843.png" alt="img"></p>
-<p><strong>如果负迁移间隙是正的，就会发生负迁移。</strong></p>
-<h2 id="1-2负迁移根源"><a href="#1-2负迁移根源" class="headerlink" title="1.2负迁移根源"></a>1.2负迁移根源</h2><h3 id="1-2-1数据角度"><a href="#1-2-1数据角度" class="headerlink" title="1.2.1数据角度"></a>1.2.1数据角度</h3><p>在无监督条件下，如果$P_S(X,Y)$和$P_T(X,Y)$之间没有较大的偏差，就算没有目标域的标签信息，也能够很好的完成迁移。反之会产生<strong>负迁移</strong>。</p>
-<ol>
-<li><p> 在$P_T(Y) = P_S(Y)$的情况下，$P_S(X|Y)$和$P_T(X|Y)$之间存在较大的差距。</p>
-</li>
-<li><p> 在$P_T(X) = P_S(X)$的情况下，$P_S(Y|X)$和$P_T(Y|X)$之间存在较大的差距。</p>
-</li>
-</ol>
-<p>对于<strong>两域标签空间一样的情况下</strong>，一般为前者（在数据集的样本分布差不多的情况）。</p>
-<p>因此负迁移主要取决于$P_S(X，Y)$和$P_T(X，Y)$之间的差异。作为一个极端的例子，假设$P_S(X)=P_T(X)$，并且$P_S(Y|x)$对于任何$x$都是<strong>均匀分布</strong>。在这种情况下，在$P_S(X,Y)$中根本没有任何有意义的知识。因此，除非$P_T(Y|X)$也满足均匀分布，否则利用$S∼P_S(X,Y)$几乎肯定会损害$P_T（Y|X）$的估计。</p>
-<p>感性上，域偏差是由以下因素造成的：</p>
-<ol>
-<li><p>光照畸变（亮度等）</p>
-</li>
-<li><p>形状不同</p>
-</li>
-<li><p>纹理颜色不同</p>
-</li>
-<li><p>背景不同</p>
-</li>
-</ol>
-<h3 id="1-2-2方法角度"><a href="#1-2-2方法角度" class="headerlink" title="1.2.2方法角度"></a>1.2.2方法角度</h3><p>现有的DA方法都是基于以下理论：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1554582828.png" alt="img"></p>
-<p>这些方法的侧重点都是最小化第二项：<strong>源域目标域的分布差异散度</strong>。</p>
-<p>常规的基于MMD的方法都是最小化：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1551149000.png" alt="img"></p>
-<p>其中：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1552494609.png" alt="img"></p>
-<p>常规的基于对抗的方法的损失函数如下：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1452342296.png" alt="img"></p>
-<p>以上的方法的损失函数中，并没有对<strong>目标域的标签数据</strong>施加任何约束，因此只是单纯的边缘对齐（非条件对齐），或者说是<strong>全局对齐</strong>。</p>
-<h1 id="2-解决负迁移的方法"><a href="#2-解决负迁移的方法" class="headerlink" title="2.解决负迁移的方法"></a>2.解决负迁移的方法</h1><h2 id="2-1-数据层面"><a href="#2-1-数据层面" class="headerlink" title="2.1 数据层面"></a>2.1 数据层面</h2><ol>
-<li><p>几何变换：旋转，缩放，平移。</p>
-</li>
-<li><p>训练集收集具有多种背景，光照条件，物体形状（包含姿势），以及纹理颜色的图像。</p>
-</li>
-</ol>
-<p>目的：从源域上便学习到了域不变特征。</p>
-<p>缺陷：需要收集大量数据，迁移学习失去意义。</p>
-<p>因此该层面上仅仅只能对训练集做几何变换预处理，学习关于几何的不变性特征。对于别的方面的域差异，不易于建模。</p>
-<p>也有方法在数据层面上对图像进行风格迁移。</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/9716742e-f57b-40e8-8b66-1173fd78cbb3.jpg" alt="img"></p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/c568c4d4-dc35-49bb-a4b9-b7c62a277753.jpg" alt="img"></p>
-<h2 id="2-2算法层面"><a href="#2-2算法层面" class="headerlink" title="2.2算法层面"></a>2.2算法层面</h2><h3 id="2-2-1理论角度（条件迁移）"><a href="#2-2-1理论角度（条件迁移）" class="headerlink" title="2.2.1理论角度（条件迁移）"></a>2.2.1理论角度（条件迁移）</h3><p>原始的方法并没有考虑类别对齐信息，之前的方法都是基于假设：<strong>同类相吸</strong>：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1550130546.png" alt="img"></p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1550025765.png" alt="img"></p>
-<p>但其实在没有给予一定的约束下，将不会发生真正的条件迁移，<strong>分类损失可以看成约束的一种</strong>。但是这种约束并不是太强，<strong>因为此约束并没有直接作用在目标域的标签上，这将导致目标域的样本特征在无意义的向源域的可鉴别特征对齐</strong>。</p>
-<p>因此为了解决这一问题，一般在算法层面上有以下方法来实现条件域迁移（又称为子域迁移，局部迁移）。</p>
-<ol>
-<li>给予目标域伪标签（一般为分类器软标签，或者聚类，提高鲁棒性），不断迭代，最终收敛到正确值（CAN,MADA,CDAN,DSAN）。</li>
-</ol>
-<p>别的方法都是普通的全局对齐方法（DaNN（MMD）,DDC（MMD），DAN（MK-MMD）,DANN（GAN））或者在误差上界上做文章（MCD）。</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1564520859.png" alt="img"></p>
-<p>可以看出在条件迁移的方法普遍比非条件迁移效果更好。</p>
-<p>但是基于伪标签的方法，极大的依赖于伪标签的质量，若伪标签质量较差，将会引发负迁移，除此之外，硬标签是不可取的，即需要用软标签作为某种权重（不同方法，表现不同），来修正损失项，例如DSAN（目前效果最好的条件对齐方法）：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1565830140.png" alt="img"></p>
-<p>但是对于一些离决策边界（决策边界上的目标域样本意味着模棱两可）较远的目标域样本，即完全错分类样本，会起到不好的效果（正确类引力不够）。</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/1605571890.png" alt="img"></p>
-<p>因此之前方法奏效的前提为：目标域上的某类样本不会完全偏离决策边界。否则会存在<strong>滚雪球效应</strong>。</p>
-<h3 id="2-2-2-感性角度（引导条件迁移）"><a href="#2-2-2-感性角度（引导条件迁移）" class="headerlink" title="2.2.2 感性角度（引导条件迁移）"></a>2.2.2 感性角度（引导条件迁移）</h3><p>感性角度上，我们的目标是学习到<strong>域不变特征</strong>，<strong>也就是我们需要将下面几个造成域偏差的原因在原空间或者特征空间上消除</strong>，这样就可以真正的做到条件对齐。</p>
-<ol>
-<li><p>光照畸变（亮度等）</p>
-</li>
-<li><p>形状不同</p>
-</li>
-<li><p>纹理颜色不同</p>
-</li>
-<li><p>背景不同</p>
-</li>
-</ol>
-<p>以上原因造成了$P_S(X|Y)$和$P_T(X|Y)$之间存在较大的差距。（域偏差原因）</p>
-<p>之前的方法只有分类损失这一约束条件，其旨在学习到可鉴别特征，但是目标域某个类别为$A$的样本在这个特征层上可能偏向于在源域中的$B$类，这样将导致负迁移，即将一些<strong>无关特征</strong>进行了迁移（由背景产生不该有的激活值）。（分类损失的约束不强的原因）。</p>
-<p>因此感性角度有利于分析立论角度的存在的一些问题，因此从感性角度来解决问题，更加的直观，从感性角度上找到<strong>更强的约束条件</strong>。</p>
-<p>因此感性角度上看，要解决<strong>如何添加约束条件，引导网络学习到域不变特征</strong>。</p>
-<p>现有的这类方法有：TADA(Transferable Attention for Domain Adaptation)</p>
-<h3 id="2-2-3-二者区别"><a href="#2-2-3-二者区别" class="headerlink" title="2.2.3 二者区别"></a>2.2.3 二者区别</h3><p>一个在于利用伪标签直接进行条件对齐，一个从感性的角度上，加一些约束条件（loss），引导网络对齐域不变特征，而不是无关特征。</p>
-<h1 id="3-CAM-Based-DA"><a href="#3-CAM-Based-DA" class="headerlink" title="3.CAM-Based DA"></a>3.CAM-Based DA</h1><p>CAM（class activation map）是一种热力图，有多种变体，其中越“热”（颜色越深）的区域，对于最后的结果影响越大。</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/6e371418-d88d-40cb-9ea3-8d53cf1fd6b1.jpg" alt="img"></p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/40d0f181-e14d-4baa-9f84-4e010f202e7c.jpg" alt="img"></p>
-<h2 id="3-1-从域鉴别器的CAM角度"><a href="#3-1-从域鉴别器的CAM角度" class="headerlink" title="3.1 从域鉴别器的CAM角度"></a>3.1 从域鉴别器的CAM角度</h2><p>从直觉上，对于域鉴别器产生的CAM，可以反映源域与目标域之间的共性区域（域不变特征）。</p>
-<ol>
-<li><p>对于源域和目标域都添加一个<strong>域鉴别器CAM差异损失</strong>，衡量源域类别CAM和目标域类别CAM之间的差异（初步定为L2损失）。该损失的目的在于，<strong>约束域鉴别器，使得其判别图片为源域和目标域的基准在相同的区域</strong>。定义为$L_{CAM_{D}}$。但是这个损失并没有将这个区域的范围缩小到合适范围。</p>
-</li>
-<li><p>我们希望域鉴别器产生的CAM与目标域真实类别对应的分类器CAM是近似的，<strong>这样提供给分辨的特征就是域不变特征</strong>。因此在源域上加上一个损失函数，使得源域和目标域样本对应类别的可鉴别特征和域不变特征进行对齐。这种约束使得我们的分类器的判别标准仅仅为域不变特征，而不掺杂其余无关特征。定义为$L_{CAM_{DC}}$。这个损失虽然约束了源域的CAM区域范围，但是并没有影响目标域的CAM区域范围。</p>
-</li>
-</ol>
-<p>3.我们希望源域和目标域的域鉴别器产生的CAM满足同分布，即再建立一个CAM鉴别器，对源域和目标域的CAM进行对齐。定义为$L_{D_{CAM}}$。这个损失将使得源域与目标域的CAM区域对齐，约束目标域的CAM区域范围。</p>
-<p>三个损失函数加上分类损失和域鉴别损失，将使得CAM区域收敛到域不变特征范围。——四个超参数.</p>
-<p>结构图：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/21892d70-ae66-4cc0-baa1-5af787cda2b4.jpg" alt="img"></p>
-<h2 id="3-2-从分类器的CAM角度"><a href="#3-2-从分类器的CAM角度" class="headerlink" title="3.2 从分类器的CAM角度"></a>3.2 从分类器的CAM角度</h2><p>我们希望这个新加的约束，可以使得B类目标域样本，脱离源域A类集群，被B类集群所吸引。如果目标样本在A中，那么势必该样本关于A类的热力图激活值较大，如果该样本属于B类，那么该样本的热力图分布势必与A的热力图分布具有较大的差异。与B类的热力图分布近似，但是由于激活值没有A类别的大，导致类型识别错误。</p>
-<ol>
-<li><p> 只是将目标域的最大置信度的类CAM与源域进行对齐，这样将导致滚雪球效应。</p>
-</li>
-<li><p> 对齐源域和目标域的所有类别CAM——对于目标域，形成高激活值的类CAM图，势必与源域该类的CAM图同分布。这样仍然会产生滚雪球效应。</p>
-</li>
-<li><p> 给出一个衡量CAM形状分布好坏的指标，得到目标域样本匹配最好的类别热力图形状，对该类别的热力图进行对齐，其余的热力图激活值越小越好(源域目标域)。<em><strong>指标可以是将归一化后的CAM输入网络中进行训练后的置信度。取决于指标计算的准确度</strong></em>。受指标影响。</p>
-</li>
-</ol>
-<p>结构图：</p>
-<p><img src="https://gitee.com/lyndon-wong/blogimg/raw/master/be338959-1e05-4fcb-bd1e-0b753d492984.jpg" alt="img"></p>
-<h1 id="4-VAE-Based"><a href="#4-VAE-Based" class="headerlink" title="4. VAE-Based"></a>4. VAE-Based</h1><p>通过源域的数据建模出变化因子</p>
-
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2021-04-08T09:42:45.369Z" itemprop="datePublished">2021-04-08</time>
-</div>
-    
-        <div class="article-category">
-        <a class="article-category-link" href="/categories/Transfer-Learning/">Transfer Learning</a>
-        </div>
-    
-    
-        <div class="article-tag">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/report/" rel="tag">report</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transfer-learning/" rel="tag">transfer learning</a></li></ul>
-        </div>
     
     </div>
 </footer>
@@ -364,11 +254,11 @@ class="article article-type-post"
       <ul>
         
           <li>
-            <a href="/2021/04/08/hello-world/">Hello World</a>
+            <a href="/2021/04/08/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%9D%A1%E4%BB%B6%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/">如何解决条件对齐问题？——帅欣成</a>
           </li>
         
           <li>
-            <a href="/2021/04/08/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%9D%A1%E4%BB%B6%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/">如何解决条件对齐问题？——帅欣成</a>
+            <a href="/2021/04/08/hello-world/">Hello World</a>
           </li>
         
       </ul>
